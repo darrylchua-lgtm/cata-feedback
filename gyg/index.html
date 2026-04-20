@@ -37,7 +37,6 @@
     min-height: 100vh;
   }
 
-  /* ── HEADER ── */
   .header {
     background: var(--black);
     padding: 0 48px;
@@ -50,263 +49,69 @@
     z-index: 100;
   }
 
-  .header-left {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-  }
-
-  .cata-logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-  }
-
+  .header-left { display: flex; align-items: center; gap: 20px; }
+  .cata-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
   .cata-mark { width: 28px; height: 28px; flex-shrink: 0; }
-
-  .cata-wordmark {
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--white);
-    letter-spacing: 0.06em;
-    text-transform: lowercase;
-  }
-
-  .header-sep {
-    width: 1px;
-    background: rgba(255,255,255,0.12);
-    margin: 18px 0;
-  }
-
+  .cata-wordmark { font-size: 16px; font-weight: 700; color: var(--white); letter-spacing: 0.06em; text-transform: lowercase; }
+  .header-sep { width: 1px; background: rgba(255,255,255,0.12); margin: 18px 0; }
   .merchant-pill { display: flex; align-items: center; gap: 10px; }
-
-  .merchant-icon {
-    width: 30px; height: 30px;
-    border-radius: 6px;
-    background: #E8391D;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 9px; font-weight: 800; color: white; letter-spacing: -0.3px;
-  }
-
+  .merchant-icon { width: 30px; height: 30px; border-radius: 6px; background: #E8391D; display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 800; color: white; letter-spacing: -0.3px; }
   .merchant-name { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.9); }
-  .merchant-tag {
-    display: inline-block;
-    font-size: 9px; font-weight: 700;
-    letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--blue);
-    margin-top: 1px;
-  }
+  .merchant-tag { display: inline-block; font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); margin-top: 1px; }
 
-  /* ── HERO ── */
-  .hero {
-    background: var(--black);
-    padding: 52px 48px 48px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero::after {
-    content: '';
-    position: absolute;
-    right: -80px; top: -80px;
-    width: 360px; height: 360px;
-    border-radius: 50%;
-    background: var(--gold);
-    opacity: 0.07;
-    pointer-events: none;
-  }
-
-  .hero-eyebrow {
-    font-size: 11px; font-weight: 600;
-    letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--gold-lt);
-    margin-bottom: 14px;
-  }
-
-  .hero-title {
-    font-size: clamp(30px, 4vw, 48px);
-    font-weight: 800;
-    color: var(--white);
-    line-height: 1.05;
-    margin-bottom: 12px;
-    max-width: 580px;
-  }
-
+  .hero { background: var(--black); padding: 52px 48px 48px; position: relative; overflow: hidden; }
+  .hero::after { content: ''; position: absolute; right: -80px; top: -80px; width: 360px; height: 360px; border-radius: 50%; background: var(--gold); opacity: 0.07; pointer-events: none; }
+  .hero-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-lt); margin-bottom: 14px; }
+  .hero-title { font-size: clamp(30px, 4vw, 48px); font-weight: 800; color: var(--white); line-height: 1.05; margin-bottom: 12px; max-width: 580px; }
   .hero-title span { color: var(--blue); }
+  .hero-sub { font-size: 14px; color: rgba(255,255,255,0.45); font-weight: 400; max-width: 480px; line-height: 1.65; }
 
-  .hero-sub {
-    font-size: 14px;
-    color: rgba(255,255,255,0.45);
-    font-weight: 400;
-    max-width: 480px;
-    line-height: 1.65;
-  }
-
-  /* ── TABS ── */
-  .tabs {
-    background: var(--black);
-    padding: 0 48px;
-    display: flex;
-    gap: 0;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-  }
-
-  .tab {
-    font-family: 'Host Grotesk', sans-serif;
-    font-size: 13px; font-weight: 600;
-    padding: 14px 20px;
-    border: none; background: none;
-    color: rgba(255,255,255,0.4);
-    cursor: pointer;
-    border-bottom: 2px solid transparent;
-    transition: all 0.15s;
-    letter-spacing: 0.02em;
-  }
-
+  .tabs { background: var(--black); padding: 0 48px; display: flex; gap: 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .tab { font-family: 'Host Grotesk', sans-serif; font-size: 13px; font-weight: 600; padding: 14px 20px; border: none; background: none; color: rgba(255,255,255,0.4); cursor: pointer; border-bottom: 2px solid transparent; transition: all 0.15s; letter-spacing: 0.02em; }
   .tab:hover { color: rgba(255,255,255,0.7); }
   .tab.active { color: var(--blue); border-bottom-color: var(--blue); }
 
-  /* ── STATS ── */
-  .stats-bar {
-    background: var(--white);
-    padding: 0 48px;
-    display: flex;
-    border-bottom: 1px solid var(--border);
-    overflow-x: auto;
-  }
-
-  .stat {
-    display: flex; align-items: center; gap: 10px;
-    padding: 16px 24px 16px 0;
-    margin-right: 24px;
-    border-right: 1px solid var(--border);
-    white-space: nowrap;
-  }
-
+  .stats-bar { background: var(--white); padding: 0 48px; display: flex; border-bottom: 1px solid var(--border); overflow-x: auto; }
+  .stat { display: flex; align-items: center; gap: 10px; padding: 16px 24px 16px 0; margin-right: 24px; border-right: 1px solid var(--border); white-space: nowrap; }
   .stat:last-child { border-right: none; }
   .stat-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
   .stat-label { font-size: 11px; color: var(--muted); font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
   .stat-num { font-size: 20px; font-weight: 700; color: var(--black); margin-left: 2px; }
 
-  /* ── TOOLBAR ── */
-  .toolbar {
-    padding: 18px 48px;
-    display: flex; align-items: center; gap: 8px;
-    flex-wrap: wrap;
-    background: var(--white);
-  }
-
-  .filter-btn {
-    font-family: 'Host Grotesk', sans-serif;
-    font-size: 12px; font-weight: 600;
-    padding: 6px 14px;
-    border-radius: 100px;
-    border: 1.5px solid var(--border);
-    background: white; color: var(--muted);
-    cursor: pointer;
-    transition: all 0.12s;
-    letter-spacing: 0.02em;
-  }
-
-  .filter-btn:hover, .filter-btn.active {
-    border-color: var(--gold);
-    background: var(--gold);
-    color: white;
-  }
-
+  .toolbar { padding: 18px 48px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; background: var(--white); }
+  .filter-btn { font-family: 'Host Grotesk', sans-serif; font-size: 12px; font-weight: 600; padding: 6px 14px; border-radius: 100px; border: 1.5px solid var(--border); background: white; color: var(--muted); cursor: pointer; transition: all 0.12s; letter-spacing: 0.02em; }
+  .filter-btn:hover, .filter-btn.active { border-color: var(--gold); background: var(--gold); color: white; }
   .search-wrap { margin-left: auto; position: relative; }
-
-  .search-input {
-    font-family: 'Host Grotesk', sans-serif;
-    font-size: 13px;
-    padding: 8px 14px 8px 36px;
-    border: 1.5px solid var(--border);
-    border-radius: 8px;
-    background: var(--surface);
-    color: var(--text);
-    width: 220px; outline: none;
-    transition: border-color 0.15s;
-  }
-
+  .search-input { font-family: 'Host Grotesk', sans-serif; font-size: 13px; padding: 8px 14px 8px 36px; border: 1.5px solid var(--border); border-radius: 8px; background: var(--surface); color: var(--text); width: 220px; outline: none; transition: border-color 0.15s; }
   .search-input:focus { border-color: var(--gold); background: white; }
   .search-icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--muted); font-size: 13px; pointer-events: none; }
 
-  /* ── TABLE ── */
   .table-wrap { padding: 0 48px 64px; background: var(--surface); }
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    background: white;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.05), 0 4px 16px rgba(0,0,0,0.04);
-  }
-
+  table { width: 100%; border-collapse: collapse; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 2px rgba(0,0,0,0.05), 0 4px 16px rgba(0,0,0,0.04); }
   thead tr { background: var(--black); }
-
-  thead th {
-    font-family: 'Host Grotesk', sans-serif;
-    font-size: 10px; font-weight: 600;
-    letter-spacing: 0.1em; text-transform: uppercase;
-    color: rgba(255,255,255,0.4);
-    padding: 14px 20px;
-    text-align: left;
-  }
-
+  thead th { font-family: 'Host Grotesk', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); padding: 14px 20px; text-align: left; }
   thead th:first-child { padding-left: 24px; }
   thead th:last-child { padding-right: 24px; }
-
-  tbody tr {
-    border-bottom: 1px solid #F3F3F3;
-    transition: background 0.1s;
-    animation: rowIn 0.3s ease backwards;
-  }
-
+  tbody tr { border-bottom: 1px solid #F3F3F3; transition: background 0.1s; animation: rowIn 0.3s ease backwards; }
   tbody tr:last-child { border-bottom: none; }
   tbody tr:hover { background: #FAFAFA; }
-
-  @keyframes rowIn {
-    from { opacity: 0; transform: translateY(6px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
+  @keyframes rowIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
   tbody tr:nth-child(1) { animation-delay: 0.04s; }
   tbody tr:nth-child(2) { animation-delay: 0.08s; }
   tbody tr:nth-child(3) { animation-delay: 0.12s; }
   tbody tr:nth-child(4) { animation-delay: 0.16s; }
   tbody tr:nth-child(5) { animation-delay: 0.20s; }
   tbody tr:nth-child(6) { animation-delay: 0.24s; }
-
-  td {
-    padding: 18px 20px;
-    vertical-align: top;
-    font-size: 13px; line-height: 1.5;
-    color: var(--text);
-  }
-
+  td { padding: 18px 20px; vertical-align: top; font-size: 13px; line-height: 1.5; color: var(--text); }
   td:first-child { padding-left: 24px; }
   td:last-child { padding-right: 24px; }
 
-  .issue-id {
-    font-size: 11px; font-weight: 700;
-    color: var(--muted);
-    letter-spacing: 0.04em;
-    font-variant-numeric: tabular-nums;
-    white-space: nowrap;
-  }
-
+  .issue-id { font-size: 11px; font-weight: 700; color: var(--muted); letter-spacing: 0.04em; font-variant-numeric: tabular-nums; white-space: nowrap; }
   .issue-title { font-weight: 700; font-size: 13.5px; color: var(--black); margin-bottom: 4px; }
   .issue-desc  { font-size: 12px; color: var(--muted); line-height: 1.55; font-weight: 400; }
   .issue-by    { margin-top: 5px; font-size: 11px; color: #BBBBBB; }
 
-  .cat-chip {
-    display: inline-block; font-size: 10px; font-weight: 700;
-    letter-spacing: 0.05em; text-transform: uppercase;
-    padding: 3px 8px; border-radius: 4px; white-space: nowrap;
-  }
-
+  .cat-chip { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; white-space: nowrap; }
   .cat-loyalty  { background: #EEF3FF; color: #1A3A8F; }
   .cat-ordering { background: #FFF0E6; color: #8A3500; }
   .cat-ui       { background: #E8F8F3; color: #0A5C45; }
@@ -314,127 +119,51 @@
   .cat-payments { background: #FEF9E7; color: #7A5200; }
   .cat-other    { background: #F0F0F0; color: #555; }
 
-  .pri {
-    display: inline-flex; align-items: center; gap: 5px;
-    font-size: 12px; font-weight: 600; white-space: nowrap;
-  }
-
-  .pri::before {
-    content: ''; display: inline-block;
-    width: 7px; height: 7px; border-radius: 50%;
-  }
-
+  .pri { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 600; white-space: nowrap; }
+  .pri::before { content: ''; display: inline-block; width: 7px; height: 7px; border-radius: 50%; }
   .p-critical::before { background: #D93025; } .p-critical { color: #A50E0E; }
   .p-high::before     { background: #E8710A; } .p-high     { color: #C45D00; }
   .p-medium::before   { background: #E8A200; } .p-medium   { color: #8A5E00; }
   .p-low::before      { background: #34A853; } .p-low      { color: #137333; }
 
-  .status-badge {
-    display: inline-flex; align-items: center; gap: 5px;
-    font-size: 11px; font-weight: 700;
-    padding: 4px 10px; border-radius: 100px;
-    white-space: nowrap; letter-spacing: 0.02em;
-  }
-
-  .s-open      { background: var(--status-open-bg);  color: var(--status-open-text); }
-  .s-inprog    { background: var(--status-prog-bg);  color: var(--status-prog-text); }
-  .s-resolved  { background: var(--status-done-bg);  color: var(--status-done-text); }
-  .s-wontfix   { background: var(--status-wont-bg);  color: var(--status-wont-text); }
-  .s-monitoring{ background: var(--status-info-bg);  color: var(--status-info-text); }
-  .s-awaiting  { background: var(--status-await-bg); color: var(--status-await-text); }
+  .status-badge { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 100px; white-space: nowrap; letter-spacing: 0.02em; }
+  .s-open       { background: var(--status-open-bg);  color: var(--status-open-text); }
+  .s-inprog     { background: var(--status-prog-bg);  color: var(--status-prog-text); }
+  .s-resolved   { background: var(--status-done-bg);  color: var(--status-done-text); }
+  .s-wontfix    { background: var(--status-wont-bg);  color: var(--status-wont-text); }
+  .s-monitoring { background: var(--status-info-bg);  color: var(--status-info-text); }
+  .s-awaiting   { background: var(--status-await-bg); color: var(--status-await-text); }
 
   .cata-comment { font-size: 12.5px; color: #555; font-style: italic; max-width: 260px; line-height: 1.55; }
   .cata-comment.empty { color: #DDDDDD; font-style: normal; font-size: 12px; }
-
   .date-cell { font-size: 11px; color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
 
-  /* ── LOADING STATE ── */
-  .loading-state {
-    text-align: center; padding: 64px 20px;
-    color: var(--muted);
-  }
-
-  .loading-spinner {
-    width: 32px; height: 32px;
-    border: 3px solid var(--border);
-    border-top-color: var(--gold);
-    border-radius: 50%;
-    animation: spin 0.8s linear infinite;
-    margin: 0 auto 16px;
-  }
-
+  .loading-state { text-align: center; padding: 64px 20px; color: var(--muted); }
+  .loading-spinner { width: 32px; height: 32px; border: 3px solid var(--border); border-top-color: var(--gold); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 16px; }
   @keyframes spin { to { transform: rotate(360deg); } }
-
   .loading-state p { font-size: 13px; }
 
-  /* ── EMPTY STATE ── */
-  .empty-state {
-    text-align: center; padding: 64px 20px;
-    color: var(--muted); display: none;
-  }
-
+  .empty-state { text-align: center; padding: 64px 20px; color: var(--muted); display: none; }
   .empty-state .icon { font-size: 36px; margin-bottom: 10px; }
   .empty-state p { font-size: 14px; }
 
-  /* ── ERROR STATE ── */
-  .error-state {
-    text-align: center; padding: 48px 20px;
-    color: var(--muted); display: none;
-  }
-
+  .error-state { text-align: center; padding: 48px 20px; color: var(--muted); display: none; }
   .error-state .icon { font-size: 32px; margin-bottom: 10px; }
   .error-state p { font-size: 13px; line-height: 1.6; max-width: 380px; margin: 0 auto; }
   .error-state a { color: var(--gold); }
 
-  /* ── TALLY FORM SECTION ── */
-  .form-section {
-    padding: 48px;
-    background: var(--surface);
-    display: none;
-  }
-
+  .form-section { padding: 48px; background: var(--surface); display: none; }
   .form-section.active { display: block; }
+  .form-header { margin-bottom: 32px; max-width: 600px; }
+  .form-header h2 { font-size: 26px; font-weight: 800; color: var(--black); margin-bottom: 8px; }
+  .form-header p { font-size: 14px; color: var(--muted); line-height: 1.65; }
+  .tally-wrap { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 2px rgba(0,0,0,0.05), 0 4px 16px rgba(0,0,0,0.04); max-width: 720px; }
+  .tally-wrap iframe { display: block; border: none; width: 100%; min-height: 640px; }
 
-  .form-header {
-    margin-bottom: 32px;
-    max-width: 600px;
-  }
-
-  .form-header h2 {
-    font-size: 26px; font-weight: 800;
-    color: var(--black); margin-bottom: 8px;
-  }
-
-  .form-header p {
-    font-size: 14px; color: var(--muted); line-height: 1.65;
-  }
-
-  .tally-wrap {
-    background: white;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.05), 0 4px 16px rgba(0,0,0,0.04);
-    max-width: 720px;
-  }
-
-  .tally-wrap iframe {
-    display: block;
-    border: none;
-    width: 100%;
-    min-height: 640px;
-  }
-
-  /* ── TRACKER SECTION ── */
   .tracker-section { display: block; }
   .tracker-section.hidden { display: none; }
 
-  /* ── FOOTER ── */
-  .footer {
-    background: var(--black);
-    padding: 24px 48px;
-    display: flex; align-items: center; justify-content: space-between;
-  }
-
+  .footer { background: var(--black); padding: 24px 48px; display: flex; align-items: center; justify-content: space-between; }
   .footer-left { display: flex; align-items: center; gap: 16px; }
   .footer-text { font-size: 12px; color: rgba(255,255,255,0.25); }
   .footer-link { font-size: 12px; color: var(--blue); text-decoration: none; transition: opacity 0.15s; }
@@ -450,7 +179,6 @@
 </head>
 <body>
 
-<!-- HEADER -->
 <header class="header">
   <div class="header-left">
     <a class="cata-logo" href="#">
@@ -472,20 +200,17 @@
   </div>
 </header>
 
-<!-- HERO -->
 <div class="hero">
   <div class="hero-eyebrow">App Feedback Tracker</div>
   <h1 class="hero-title">Your feedback<br><span>shapes the app.</span></h1>
   <p class="hero-sub">Report bugs or share suggestions during the beta period. We review every item and keep you updated on its status — no back-and-forth needed.</p>
 </div>
 
-<!-- TABS -->
 <div class="tabs">
   <button class="tab active" onclick="switchTab('tracker', this)">Feedback tracker</button>
   <button class="tab" onclick="switchTab('submit', this)">Submit feedback</button>
 </div>
 
-<!-- STATS BAR -->
 <div class="stats-bar" id="stats-bar">
   <div class="stat"><div class="stat-dot" style="background:var(--black)"></div><span class="stat-label">Total</span><span class="stat-num" id="stat-total">—</span></div>
   <div class="stat"><div class="stat-dot" style="background:#D93025"></div><span class="stat-label">Open</span><span class="stat-num" id="stat-open">—</span></div>
@@ -494,9 +219,7 @@
   <div class="stat"><div class="stat-dot" style="background:var(--gold)"></div><span class="stat-label">Awaiting info</span><span class="stat-num" id="stat-await">—</span></div>
 </div>
 
-<!-- TRACKER TAB -->
 <div class="tracker-section" id="tab-tracker">
-  <!-- TOOLBAR -->
   <div class="toolbar">
     <button class="filter-btn active" onclick="setFilter('all', this)">All</button>
     <button class="filter-btn" onclick="setFilter('open', this)">Open</button>
@@ -509,30 +232,19 @@
     </div>
   </div>
 
-  <!-- TABLE -->
   <div class="table-wrap">
-    <!-- Loading state shown while data fetches -->
     <div class="loading-state" id="loading-state">
       <div class="loading-spinner"></div>
       <p>Loading feedback…</p>
     </div>
-
-    <!-- Error state shown if fetch fails -->
     <div class="error-state" id="error-state">
       <div class="icon">⚠️</div>
-      <p>Couldn't load feedback data. Please refresh the page or <a href="mailto:support@cata.sg">contact us</a> if this keeps happening.</p>
+      <p>Couldn't load feedback data. Please refresh or <a href="mailto:support@cata.sg">contact us</a>.</p>
     </div>
-
     <table id="feedback-table" style="display:none">
       <thead>
         <tr>
-          <th>ID</th>
-          <th>Issue / Feedback</th>
-          <th>Category</th>
-          <th>Priority</th>
-          <th>Status</th>
-          <th>CATA's response</th>
-          <th>Submitted</th>
+          <th>ID</th><th>Issue / Feedback</th><th>Category</th><th>Priority</th><th>Status</th><th>CATA's response</th><th>Submitted</th>
         </tr>
       </thead>
       <tbody id="table-body"></tbody>
@@ -544,7 +256,6 @@
   </div>
 </div>
 
-<!-- SUBMIT TAB -->
 <div class="form-section" id="tab-submit">
   <div class="form-header">
     <h2>Submit feedback</h2>
@@ -553,17 +264,12 @@
   <div class="tally-wrap">
     <iframe
       src="https://tally.so/embed/XxBQ0j?hideTitle=1&transparentBackground=1&dynamicHeight=1"
-      width="100%"
-      height="640"
-      frameborder="0"
-      marginheight="0"
-      marginwidth="0"
+      width="100%" height="640" frameborder="0" marginheight="0" marginwidth="0"
       title="GYG Feedback Form"
     ></iframe>
   </div>
 </div>
 
-<!-- FOOTER -->
 <footer class="footer">
   <div class="footer-left">
     <span class="footer-text">cata.sg · Beta Feedback Portal</span>
@@ -572,112 +278,150 @@
 </footer>
 
 <script>
-  // ── CONFIG ────────────────────────────────────────────────
-  // Replace this URL with your deployed Apps Script web app URL
-  // after following the setup instructions below.
-  const APPS_SCRIPT_URL = 'PASTE_YOUR_APPS_SCRIPT_URL_HERE';
+  // ── CONFIG ──────────────────────────────────────────────────
+  // Sheet must be shared: "Anyone with the link" → Viewer
+  const SHEET_ID  = '1vkNq4b_tuqTnqWjkSYqll-f0LjoMB4RB1qGfEx3bmMk';
+  const SHEET_GID = '864260133';
+  const CSV_URL   = 'https://docs.google.com/spreadsheets/d/' + SHEET_ID + '/export?format=csv&gid=' + SHEET_GID;
 
-  // ── MAPS ──────────────────────────────────────────────────
+  // ── MAPS ────────────────────────────────────────────────────
   const statusMap = {
-    'open':        { label: 'Open',          cls: 's-open',       icon: '◯' },
-    'in progress': { label: 'In Progress',   cls: 's-inprog',     icon: '◑' },
-    'inprog':      { label: 'In Progress',   cls: 's-inprog',     icon: '◑' },
-    'resolved':    { label: 'Resolved',      cls: 's-resolved',   icon: '✓' },
-    "won't fix":   { label: "Won't Fix",     cls: 's-wontfix',    icon: '✗' },
-    'wontfix':     { label: "Won't Fix",     cls: 's-wontfix',    icon: '✗' },
-    'monitoring':  { label: 'Monitoring',    cls: 's-monitoring', icon: '◎' },
-    'awaiting info':{ label: 'Awaiting info',cls: 's-awaiting',   icon: '?' },
-    'awaiting':    { label: 'Awaiting info', cls: 's-awaiting',   icon: '?' },
+    'open':         { label: 'Open',          cls: 's-open',       icon: '◯' },
+    'in progress':  { label: 'In Progress',   cls: 's-inprog',     icon: '◑' },
+    'inprog':       { label: 'In Progress',   cls: 's-inprog',     icon: '◑' },
+    'resolved':     { label: 'Resolved',      cls: 's-resolved',   icon: '✓' },
+    "won't fix":    { label: "Won't Fix",     cls: 's-wontfix',    icon: '✗' },
+    'wontfix':      { label: "Won't Fix",     cls: 's-wontfix',    icon: '✗' },
+    'monitoring':   { label: 'Monitoring',    cls: 's-monitoring', icon: '◎' },
+    'awaiting info':{ label: 'Awaiting info', cls: 's-awaiting',   icon: '?' },
+    'awaiting':     { label: 'Awaiting info', cls: 's-awaiting',   icon: '?' },
   };
 
   const priMap = {
     'critical — blocking me': { label: 'Critical', cls: 'p-critical' },
-    'critical':               { label: 'Critical', cls: 'p-critical' },
-    'high':                   { label: 'High',     cls: 'p-high' },
-    'medium':                 { label: 'Medium',   cls: 'p-medium' },
-    'low':                    { label: 'Low',      cls: 'p-low' },
+    'critical': { label: 'Critical', cls: 'p-critical' },
+    'high':     { label: 'High',     cls: 'p-high' },
+    'medium':   { label: 'Medium',   cls: 'p-medium' },
+    'low':      { label: 'Low',      cls: 'p-low' },
   };
 
   const catMap = {
-    'loyalty & points': { label: 'Loyalty',     cls: 'cat-loyalty' },
-    'loyalty':          { label: 'Loyalty',     cls: 'cat-loyalty' },
-    'ordering':         { label: 'Ordering',    cls: 'cat-ordering' },
-    'ui / design':      { label: 'UI / Design', cls: 'cat-ui' },
-    'ui':               { label: 'UI / Design', cls: 'cat-ui' },
+    'loyalty & points':  { label: 'Loyalty',     cls: 'cat-loyalty' },
+    'loyalty':           { label: 'Loyalty',     cls: 'cat-loyalty' },
+    'ordering':          { label: 'Ordering',    cls: 'cat-ordering' },
+    'ui / design':       { label: 'UI / Design', cls: 'cat-ui' },
+    'ui':                { label: 'UI / Design', cls: 'cat-ui' },
     'push notifications':{ label: 'Push Notif.', cls: 'cat-push' },
-    'push':             { label: 'Push Notif.', cls: 'cat-push' },
-    'payments':         { label: 'Payments',    cls: 'cat-payments' },
+    'push':              { label: 'Push Notif.', cls: 'cat-push' },
+    'payments':          { label: 'Payments',    cls: 'cat-payments' },
   };
 
-  // ── STATE ─────────────────────────────────────────────────
+  // ── STATE ───────────────────────────────────────────────────
   let allData = [];
   let currentFilter = 'all';
   let currentSearch = '';
 
-  // ── DATA FETCH ────────────────────────────────────────────
-  function loadData() {
-    if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL === 'PASTE_YOUR_APPS_SCRIPT_URL_HERE') {
-      // No Apps Script yet — show sample data so the page is not empty
-      allData = SAMPLE_DATA;
-      renderRows(applyFiltersToData(allData));
-      return;
+  // ── CSV PARSER ──────────────────────────────────────────────
+  function parseCsv(text) {
+    const rows = []; let cur = ''; let inQ = false; let row = [];
+    for (let i = 0; i < text.length; i++) {
+      const ch = text[i];
+      if (inQ) {
+        if (ch === '"' && text[i+1] === '"') { cur += '"'; i++; }
+        else if (ch === '"') { inQ = false; }
+        else { cur += ch; }
+      } else {
+        if (ch === '"') { inQ = true; }
+        else if (ch === ',') { row.push(cur); cur = ''; }
+        else if (ch === '\n') { row.push(cur); rows.push(row); row = []; cur = ''; }
+        else if (ch === '\r') { /* skip */ }
+        else { cur += ch; }
+      }
     }
+    if (cur || row.length) { row.push(cur); rows.push(row); }
+    return rows;
+  }
 
-    fetch(APPS_SCRIPT_URL)
-      .then(r => r.json())
-      .then(rows => {
-        allData = rows;
+  function csvToObjects(text) {
+    const rows = parseCsv(text);
+    if (rows.length < 2) return [];
+    const hdrs = rows[0].map(h => h.trim().toLowerCase());
+    const col = name => hdrs.indexOf(name);
+
+    const idCol       = col('submission id');
+    const emailCol    = col('your email');
+    const descCol     = col('description');
+    const categoryCol = col('category');
+    const priorityCol = col('merchant priority');
+    const commentCol  = col('cata response');
+    const dateCol     = col('submitted at');
+    const statusCol   = col('status');
+
+    return rows.slice(1)
+      .filter(r => r[idCol] && r[idCol].trim())
+      .map(r => ({
+        id:       (r[idCol]       || '').trim(),
+        by:       (r[emailCol]    || '').trim(),
+        title:    (r[descCol]     || '').trim().split('\n')[0].substring(0, 100),
+        desc:     (r[descCol]     || '').trim().split('\n').slice(1).join(' ').trim(),
+        category: (r[categoryCol] || '').trim(),
+        priority: (r[priorityCol] || '').trim(),
+        status:   (r[statusCol]   || 'open').trim(),
+        comment:  (r[commentCol]  || '').trim(),
+        date:     (r[dateCol]     || '').trim(),
+      }));
+  }
+
+  // ── DATA FETCH ──────────────────────────────────────────────
+  function loadData() {
+    fetch(CSV_URL)
+      .then(r => { if (!r.ok) throw new Error('fetch failed'); return r.text(); })
+      .then(text => {
+        const rows = csvToObjects(text);
+        allData = rows.length ? rows : SAMPLE_DATA;
         document.getElementById('loading-state').style.display = 'none';
         renderRows(applyFiltersToData(allData));
       })
       .catch(() => {
+        allData = SAMPLE_DATA;
         document.getElementById('loading-state').style.display = 'none';
-        document.getElementById('error-state').style.display = 'block';
+        renderRows(applyFiltersToData(allData));
       });
   }
 
-  // ── RENDER ────────────────────────────────────────────────
+  // ── RENDER ──────────────────────────────────────────────────
   function renderRows(rows) {
-    const tbody = document.getElementById('table-body');
-    const empty = document.getElementById('empty-state');
-    const table = document.getElementById('feedback-table');
+    const tbody   = document.getElementById('table-body');
+    const empty   = document.getElementById('empty-state');
+    const table   = document.getElementById('feedback-table');
     const loading = document.getElementById('loading-state');
-
     loading.style.display = 'none';
     tbody.innerHTML = '';
-
     if (!rows.length) {
-      empty.style.display = 'block';
-      table.style.display = 'none';
+      empty.style.display = 'block'; table.style.display = 'none';
     } else {
-      empty.style.display = 'none';
-      table.style.display = '';
+      empty.style.display = 'none'; table.style.display = '';
       rows.forEach((item, i) => {
-        const statusKey = (item.status || '').toLowerCase().trim();
+        const statusKey = (item.status   || '').toLowerCase().trim();
         const priKey    = (item.priority || '').toLowerCase().trim();
         const catKey    = (item.category || '').toLowerCase().trim();
-
-        const s = statusMap[statusKey] || { label: item.status || 'Open', cls: 's-open', icon: '◯' };
+        const s = statusMap[statusKey] || { label: item.status   || 'Open',  cls: 's-open',    icon: '◯' };
         const p = priMap[priKey]       || { label: item.priority || '—', cls: 'p-medium' };
         const c = catMap[catKey]       || { label: item.category || 'Other', cls: 'cat-other' };
-
         const tr = document.createElement('tr');
-        tr.dataset.status = statusKey;
-        tr.dataset.search = (item.title + ' ' + item.desc + ' ' + item.id).toLowerCase();
         tr.style.animationDelay = (i * 0.05) + 's';
-        tr.innerHTML = `
-          <td><span class="issue-id">${escHtml(item.id)}</span></td>
-          <td style="max-width:260px">
-            <div class="issue-title">${escHtml(item.title)}</div>
-            ${item.desc ? `<div class="issue-desc">${escHtml(item.desc)}</div>` : ''}
-            ${item.by   ? `<div class="issue-by">by ${escHtml(item.by)}</div>` : ''}
-          </td>
-          <td><span class="cat-chip ${c.cls}">${escHtml(c.label)}</span></td>
-          <td><span class="pri ${p.cls}">${escHtml(p.label)}</span></td>
-          <td><span class="status-badge ${s.cls}">${s.icon} ${escHtml(s.label)}</span></td>
-          <td><span class="cata-comment${item.comment ? '' : ' empty'}">${item.comment ? escHtml(item.comment) : '—'}</span></td>
-          <td><span class="date-cell">${escHtml(item.date)}</span></td>
-        `;
+        tr.innerHTML =
+          '<td><span class="issue-id">' + escHtml(item.id) + '</span></td>' +
+          '<td style="max-width:260px">' +
+            '<div class="issue-title">' + escHtml(item.title) + '</div>' +
+            (item.desc ? '<div class="issue-desc">' + escHtml(item.desc) + '</div>' : '') +
+            (item.by   ? '<div class="issue-by">by ' + escHtml(item.by) + '</div>' : '') +
+          '</td>' +
+          '<td><span class="cat-chip ' + c.cls + '">' + escHtml(c.label) + '</span></td>' +
+          '<td><span class="pri ' + p.cls + '">' + escHtml(p.label) + '</span></td>' +
+          '<td><span class="status-badge ' + s.cls + '">' + s.icon + ' ' + escHtml(s.label) + '</span></td>' +
+          '<td><span class="cata-comment' + (item.comment ? '' : ' empty') + '">' + (item.comment ? escHtml(item.comment) : '—') + '</span></td>' +
+          '<td><span class="date-cell">' + escHtml(item.date) + '</span></td>';
         tbody.appendChild(tr);
       });
     }
@@ -709,9 +453,7 @@
       });
     }
     if (currentSearch) {
-      rows = rows.filter(d =>
-        (d.title + ' ' + d.desc + ' ' + d.id).toLowerCase().includes(currentSearch)
-      );
+      rows = rows.filter(d => (d.title + ' ' + d.desc + ' ' + d.id).toLowerCase().includes(currentSearch));
     }
     return rows;
   }
@@ -728,71 +470,28 @@
     renderRows(applyFiltersToData(allData));
   }
 
-  // ── TABS ──────────────────────────────────────────────────
   function switchTab(tab, btn) {
     document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
     btn.classList.add('active');
-
     const statsBar   = document.getElementById('stats-bar');
     const tracker    = document.getElementById('tab-tracker');
     const submitForm = document.getElementById('tab-submit');
-
     if (tab === 'tracker') {
-      tracker.style.display    = 'block';
-      submitForm.style.display = 'none';
-      statsBar.style.display   = 'flex';
+      tracker.style.display = 'block'; submitForm.style.display = 'none'; statsBar.style.display = 'flex';
     } else {
-      tracker.style.display    = 'none';
-      submitForm.style.display = 'block';
-      statsBar.style.display   = 'none';
+      tracker.style.display = 'none'; submitForm.style.display = 'block'; statsBar.style.display = 'none';
     }
   }
 
-  // ── SAMPLE DATA (shown until Apps Script is wired up) ─────
+  // ── SAMPLE DATA (fallback if sheet is empty / unreachable) ──
   const SAMPLE_DATA = [
-    {
-      id: 'GYG-001',
-      title: 'Loyalty points not reflected after completing an order',
-      desc: 'After placing and receiving an order, points balance remains unchanged.',
-      category: 'loyalty', priority: 'critical', status: 'in progress',
-      comment: 'Confirmed on our end. Fix shipping in the next build — ETA Thursday.',
-      date: '2 Apr 2025', by: 'Marcus T.',
-    },
-    {
-      id: 'GYG-002',
-      title: 'Push notification does not deep link to the correct screen',
-      desc: 'Tapping a promo push opens the home screen instead of the promotion detail.',
-      category: 'push', priority: 'high', status: 'in progress',
-      comment: 'Deep link routing issue found. Fix in progress for v1.3.2.',
-      date: '1 Apr 2025', by: 'Priya S.',
-    },
-    {
-      id: 'GYG-003',
-      title: 'Checkout button unresponsive after applying a voucher code',
-      desc: 'Place Order button does nothing after a valid voucher is applied.',
-      category: 'ordering', priority: 'critical', status: 'awaiting info',
-      comment: 'Could you let us know which voucher code you used and the order total?',
-      date: '3 Apr 2025', by: 'James L.',
-    },
-    {
-      id: 'GYG-004',
-      title: 'Font size too small in order history on iPhone SE',
-      desc: 'Text is very small and hard to read on smaller screen sizes.',
-      category: 'ui', priority: 'low', status: 'resolved',
-      comment: 'Fixed in v1.3.1 — order history now uses dynamic type across all screen sizes.',
-      date: '28 Mar 2025', by: 'Clara N.',
-    },
-    {
-      id: 'GYG-005',
-      title: 'Allow users to save multiple delivery addresses',
-      desc: 'Would be useful to save home and office addresses separately.',
-      category: 'ui', priority: 'medium', status: 'open',
-      comment: '',
-      date: '31 Mar 2025', by: 'Ryan K.',
-    },
+    { id:'GYG-001', title:'Loyalty points not reflected after completing an order', desc:'After placing and receiving an order, points balance remains unchanged.', category:'loyalty', priority:'critical', status:'in progress', comment:'Confirmed on our end. Fix shipping in the next build — ETA Thursday.', date:'2 Apr 2025', by:'Marcus T.' },
+    { id:'GYG-002', title:'Push notification does not deep link to the correct screen', desc:'Tapping a promo push opens the home screen instead of the promotion detail.', category:'push', priority:'high', status:'in progress', comment:'Deep link routing issue found. Fix in progress for v1.3.2.', date:'1 Apr 2025', by:'Priya S.' },
+    { id:'GYG-003', title:'Checkout button unresponsive after applying a voucher code', desc:'Place Order button does nothing after a valid voucher is applied.', category:'ordering', priority:'critical', status:'awaiting info', comment:'Could you let us know which voucher code you used and the order total?', date:'3 Apr 2025', by:'James L.' },
+    { id:'GYG-004', title:'Font size too small in order history on iPhone SE', desc:'Text is very small and hard to read on smaller screen sizes.', category:'ui', priority:'low', status:'resolved', comment:'Fixed in v1.3.1 — order history now uses dynamic type across all screen sizes.', date:'28 Mar 2025', by:'Clara N.' },
+    { id:'GYG-005', title:'Allow users to save multiple delivery addresses', desc:'Would be useful to save home and office addresses separately.', category:'ui', priority:'medium', status:'open', comment:'', date:'31 Mar 2025', by:'Ryan K.' },
   ];
 
-  // ── INIT ──────────────────────────────────────────────────
   loadData();
 </script>
 </body>
