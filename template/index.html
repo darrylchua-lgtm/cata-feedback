@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Beta Feedback — Guzman y Gomez × CATA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --black:     #212121;
+    --white:     #FFFFFF;
+    --gold:      #6F470B;
+    --gold-lt:   #8A5A10;
+    --blue:      #9FBDF0;
+    --blue-dk:   #7689ED;
+    --bg:        #FFFFFF;
+    --surface:   #F7F7F7;
+    --border:    #E8E8E8;
+    --muted:     #888888;
+    --text:      #212121;
+
+    --status-open-bg:      #FFF3CD; --status-open-text:      #7A5200;
+    --status-prog-bg:      #E8EFFC; --status-prog-text:      #1A3A8F;
+    --status-done-bg:      #E6F4EA; --status-done-text:      #1A5C2A;
+    --status-wont-bg:      #F0F0F0; --status-wont-text:      #555555;
+    --status-info-bg:      #F0E8FF; --status-info-text:      #5B2D9A;
+    --status-await-bg:     #FDE8D8; --status-await-text:     #8A3500;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    font-family: 'Host Grotesk', sans-serif;
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--black);
+    padding: 0 48px;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    min-height: 68px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .cata-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+
+  /* CATA logomark — three interlocking rounded shapes */
+  .cata-mark {
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+  }
+
+  .cata-wordmark {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 0.06em;
+    text-transform: lowercase;
+  }
+
+  .header-sep {
+    width: 1px;
+    background: rgba(255,255,255,0.12);
+    margin: 18px 0;
+  }
+
+  .merchant-pill {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .merchant-icon {
+    width: 30px; height: 30px;
+    border-radius: 6px;
+    background: #E8391D;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 9px; font-weight: 800; color: white; letter-spacing: -0.3px;
+  }
+
+  .merchant-info {}
+  .merchant-name { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.9); }
+  .merchant-tag {
+    display: inline-block;
+    font-size: 9px; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--blue);
+    margin-top: 1px;
+  }
+
+  .header-right { display: flex; align-items: center; }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--black);
+    padding: 52px 48px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    right: -80px; top: -80px;
+    width: 360px; height: 360px;
+    border-radius: 50%;
+    background: var(--gold);
+    opacity: 0.07;
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--gold-lt);
+    margin-bottom: 14px;
+  }
+
+  .hero-title {
+    font-size: clamp(30px, 4vw, 48px);
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.05;
+    margin-bottom: 12px;
+    max-width: 580px;
+  }
+
+  .hero-title span {
+    color: var(--blue);
+  }
+
+  .hero-sub {
+    font-size: 14px;
+    color: rgba(255,255,255,0.45);
+    font-weight: 400;
+    max-width: 480px;
+    line-height: 1.65;
+  }
+
+  /* ── TABS ── */
+  .tabs {
+    background: var(--black);
+    padding: 0 48px;
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .tab {
+    font-family: 'Host Grotesk', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 14px 20px;
+    border: none;
+    background: none;
+    color: rgba(255,255,255,0.4);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.15s;
+    letter-spacing: 0.02em;
+  }
+
+  .tab:hover { color: rgba(255,255,255,0.7); }
+
+  .tab.active {
+    color: var(--blue);
+    border-bottom-color: var(--blue);
+  }
+
+  /* ── STATS ── */
+  .stats-bar {
+    background: var(--white);
+    padding: 0 48px;
+    display: flex;
+    border-bottom: 1px solid var(--border);
+    overflow-x: auto;
+  }
+
+  .stat {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 24px 16px 0;
+    margin-right: 24px;
+    border-right: 1px solid var(--border);
+    white-space: nowrap;
+  }
+
+  .stat:last-child { border-right: none; }
+  .stat-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .stat-label { font-size: 11px; color: var(--muted); font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
+  .stat-num { font-size: 20px; font-weight: 700; color: var(--black); margin-left: 2px; }
+
+  /* ── TOOLBAR ── */
+  .toolbar {
+    padding: 18px 48px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    background: var(--white);
+  }
+
+  .filter-btn {
+    font-family: 'Host Grotesk', sans-serif;
+    font-size: 12px; font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 100px;
+    border: 1.5px solid var(--border);
+    background: white;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.12s;
+    letter-spacing: 0.02em;
+  }
+
+  .filter-btn:hover, .filter-btn.active {
+    border-color: var(--gold);
+    background: var(--gold);
+    color: white;
+  }
+
+  .search-wrap { margin-left: auto; position: relative; }
+
+  .search-input {
+    font-family: 'Host Grotesk', sans-serif;
+    font-size: 13px;
+    padding: 8px 14px 8px 36px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface);
+    color: var(--text);
+    width: 220px; outline: none;
+    transition: border-color 0.15s;
+  }
+
+  .search-input:focus { border-color: var(--gold); background: white; }
+  .search-icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--muted); font-size: 13px; pointer-events: none; }
+
+  /* ── TABLE ── */
+  .table-wrap { padding: 0 48px 64px; background: var(--surface); }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05), 0 4px 16px rgba(0,0,0,0.04);
+  }
+
+  thead tr { background: var(--black); }
+
+  thead th {
+    font-family: 'Host Grotesk', sans-serif;
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    padding: 14px 20px;
+    text-align: left;
+  }
+
+  thead th:first-child { padding-left: 24px; }
+  thead th:last-child { padding-right: 24px; }
+
+  tbody tr {
+    border-bottom: 1px solid #F3F3F3;
+    transition: background 0.1s;
+    animation: rowIn 0.3s ease backwards;
+  }
+
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #FAFAFA; }
+
+  @keyframes rowIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  tbody tr:nth-child(1) { animation-delay: 0.04s; }
+  tbody tr:nth-child(2) { animation-delay: 0.08s; }
+  tbody tr:nth-child(3) { animation-delay: 0.12s; }
+  tbody tr:nth-child(4) { animation-delay: 0.16s; }
+  tbody tr:nth-child(5) { animation-delay: 0.20s; }
+  tbody tr:nth-child(6) { animation-delay: 0.24s; }
+
+  td {
+    padding: 18px 20px;
+    vertical-align: top;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--text);
+  }
+
+  td:first-child { padding-left: 24px; }
+  td:last-child { padding-right: 24px; }
+
+  .issue-id {
+    font-size: 11px; font-weight: 700;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  .issue-title { font-weight: 700; font-size: 13.5px; color: var(--black); margin-bottom: 4px; }
+  .issue-desc  { font-size: 12px; color: var(--muted); line-height: 1.55; font-weight: 400; }
+  .issue-by    { margin-top: 5px; font-size: 11px; color: #BBBBBB; }
+
+  .cat-chip {
+    display: inline-block; font-size: 10px; font-weight: 700;
+    letter-spacing: 0.05em; text-transform: uppercase;
+    padding: 3px 8px; border-radius: 4px; white-space: nowrap;
+  }
+
+  .cat-loyalty  { background: #EEF3FF; color: #1A3A8F; }
+  .cat-ordering { background: #FFF0E6; color: #8A3500; }
+  .cat-ui       { background: #E8F8F3; color: #0A5C45; }
+  .cat-push     { background: #F5EEF8; color: #6B2D9A; }
+  .cat-payments { background: #FEF9E7; color: #7A5200; }
+  .cat-other    { background: #F0F0F0; color: #555; }
+
+  .pri {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 12px; font-weight: 600; white-space: nowrap;
+  }
+
+  .pri::before {
+    content: ''; display: inline-block;
+    width: 7px; height: 7px; border-radius: 50%;
+  }
+
+  .p-critical::before { background: #D93025; } .p-critical { color: #A50E0E; }
+  .p-high::before     { background: #E8710A; } .p-high     { color: #C45D00; }
+  .p-medium::before   { background: #E8A200; } .p-medium   { color: #8A5E00; }
+  .p-low::before      { background: #34A853; } .p-low      { color: #137333; }
+
+  .status-badge {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 11px; font-weight: 700;
+    padding: 4px 10px; border-radius: 100px;
+    white-space: nowrap; letter-spacing: 0.02em;
+  }
+
+  .s-open      { background: var(--status-open-bg);  color: var(--status-open-text); }
+  .s-inprog    { background: var(--status-prog-bg);  color: var(--status-prog-text); }
+  .s-resolved  { background: var(--status-done-bg);  color: var(--status-done-text); }
+  .s-wontfix   { background: var(--status-wont-bg);  color: var(--status-wont-text); }
+  .s-monitoring{ background: var(--status-info-bg);  color: var(--status-info-text); }
+  .s-awaiting  { background: var(--status-await-bg); color: var(--status-await-text); }
+
+  .cata-comment { font-size: 12.5px; color: #555; font-style: italic; max-width: 260px; line-height: 1.55; }
+  .cata-comment.empty { color: #DDDDDD; font-style: normal; font-size: 12px; }
+
+  .date-cell { font-size: 11px; color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+
+  /* ── EMPTY STATE ── */
+  .empty-state {
+    text-align: center; padding: 64px 20px;
+    color: var(--muted); display: none;
+  }
+
+  .empty-state .icon { font-size: 36px; margin-bottom: 10px; }
+  .empty-state p { font-size: 14px; }
+
+  /* ── TALLY FORM SECTION ── */
+  .form-section {
+    padding: 48px;
+    background: var(--surface);
+    display: none;
+  }
+
+  .form-section.active { display: block; }
+
+  .form-header {
+    margin-bottom: 32px;
+    max-width: 600px;
+  }
+
+  .form-header h2 {
+    font-size: 26px; font-weight: 800;
+    color: var(--black); margin-bottom: 8px;
+  }
+
+  .form-header p {
+    font-size: 14px; color: var(--muted); line-height: 1.65;
+  }
+
+  .tally-wrap {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05), 0 4px 16px rgba(0,0,0,0.04);
+    max-width: 720px;
+  }
+
+  .tally-placeholder {
+    padding: 48px 40px;
+    text-align: center;
+  }
+
+  .tally-placeholder .tally-icon {
+    width: 56px; height: 56px;
+    background: var(--surface);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 16px;
+    font-size: 24px;
+  }
+
+  .tally-placeholder h3 {
+    font-size: 16px; font-weight: 700; color: var(--black);
+    margin-bottom: 8px;
+  }
+
+  .tally-placeholder p {
+    font-size: 13px; color: var(--muted);
+    line-height: 1.6; max-width: 380px; margin: 0 auto 24px;
+  }
+
+  .tally-embed-code {
+    background: var(--surface);
+    border: 1.5px dashed var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    font-family: monospace;
+    font-size: 12px;
+    color: var(--gold);
+    text-align: left;
+    line-height: 1.6;
+    margin: 0 auto;
+    max-width: 480px;
+    word-break: break-all;
+  }
+
+  .tally-note {
+    margin-top: 16px;
+    font-size: 11px;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  /* ── TRACKER SECTION ── */
+  .tracker-section { display: block; }
+  .tracker-section.hidden { display: none; }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--black);
+    padding: 24px 48px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+
+  .footer-left { display: flex; align-items: center; gap: 16px; }
+  .footer-text { font-size: 12px; color: rgba(255,255,255,0.25); }
+  .footer-link { font-size: 12px; color: var(--blue); text-decoration: none; transition: opacity 0.15s; }
+  .footer-link:hover { opacity: 0.75; }
+
+  @media (max-width: 720px) {
+    .header, .hero, .tabs, .stats-bar, .toolbar, .table-wrap, .form-section, .footer { padding-left: 20px; padding-right: 20px; }
+    .search-wrap { margin-left: 0; width: 100%; }
+    .search-input { width: 100%; }
+    .footer { flex-direction: column; gap: 8px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-left">
+    <a class="cata-logo" href="#">
+      <!-- CATA logomark: three interlocking rounded shapes -->
+      <svg class="cata-mark" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M14 4C14 4 8 4 6 8C4 12 7 16 10 17C7 18 4 22 6 24C8 26 14 24 14 24" stroke="#9FBDF0" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M14 4C14 4 20 4 22 8C24 12 21 16 18 17C21 18 24 22 22 24C20 26 14 24 14 24" stroke="#9FBDF0" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M6 14C6 14 8 8 14 8C20 8 22 14 22 14C22 14 20 20 14 20C8 20 6 14 6 14Z" stroke="#9FBDF0" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <span class="cata-wordmark">cata</span>
+    </a>
+    <div class="header-sep"></div>
+    <div class="merchant-pill">
+      <div class="merchant-icon">GYG</div>
+      <div class="merchant-info">
+        <div class="merchant-name">Guzman y Gomez</div>
+        <div class="merchant-tag">Beta Testing</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">App Feedback Tracker</div>
+  <h1 class="hero-title">Your feedback<br><span>shapes the app.</span></h1>
+  <p class="hero-sub">Report bugs or share suggestions during the beta period. We review every item and keep you updated on its status — no back-and-forth needed.</p>
+</div>
+
+<!-- TABS -->
+<div class="tabs">
+  <button class="tab active" onclick="switchTab('tracker', this)">Feedback tracker</button>
+  <button class="tab" onclick="switchTab('submit', this)">Submit feedback</button>
+</div>
+
+<!-- STATS BAR -->
+<div class="stats-bar" id="stats-bar">
+  <div class="stat"><div class="stat-dot" style="background:var(--black)"></div><span class="stat-label">Total</span><span class="stat-num" id="stat-total">6</span></div>
+  <div class="stat"><div class="stat-dot" style="background:#D93025"></div><span class="stat-label">Open</span><span class="stat-num" id="stat-open">2</span></div>
+  <div class="stat"><div class="stat-dot" style="background:var(--blue-dk)"></div><span class="stat-label">In Progress</span><span class="stat-num" id="stat-prog">2</span></div>
+  <div class="stat"><div class="stat-dot" style="background:#34A853"></div><span class="stat-label">Resolved</span><span class="stat-num" id="stat-done">1</span></div>
+  <div class="stat"><div class="stat-dot" style="background:var(--gold)"></div><span class="stat-label">Awaiting info</span><span class="stat-num" id="stat-await">0</span></div>
+</div>
+
+<!-- TRACKER TAB -->
+<div class="tracker-section" id="tab-tracker">
+  <!-- TOOLBAR -->
+  <div class="toolbar">
+    <button class="filter-btn active" onclick="setFilter('all', this)">All</button>
+    <button class="filter-btn" onclick="setFilter('open', this)">Open</button>
+    <button class="filter-btn" onclick="setFilter('inprog', this)">In Progress</button>
+    <button class="filter-btn" onclick="setFilter('resolved', this)">Resolved</button>
+    <button class="filter-btn" onclick="setFilter('awaiting', this)">Awaiting info</button>
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input class="search-input" type="text" placeholder="Search…" oninput="searchTable(this.value)" />
+    </div>
+  </div>
+
+  <!-- TABLE -->
+  <div class="table-wrap">
+    <table id="feedback-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Issue / Feedback</th>
+          <th>Category</th>
+          <th>Priority</th>
+          <th>Status</th>
+          <th>CATA's response</th>
+          <th>Submitted</th>
+        </tr>
+      </thead>
+      <tbody id="table-body"></tbody>
+    </table>
+    <div class="empty-state" id="empty-state">
+      <div class="icon">🔍</div>
+      <p>No feedback matches your filter.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SUBMIT TAB -->
+<div class="form-section" id="tab-submit">
+  <div class="form-header">
+    <h2>Submit feedback</h2>
+    <p>Found a bug or have a suggestion? Fill in the form below. We review every submission and will update its status on the tracker.</p>
+  </div>
+  <div class="tally-wrap">
+    <div class="tally-placeholder">
+      <div class="tally-icon">📋</div>
+      <h3>Tally form embeds here</h3>
+      <p>Replace this block with your Tally embed snippet. The form will appear seamlessly inline — no redirects, no separate page.</p>
+      <div class="tally-embed-code">
+&lt;iframe<br>
+&nbsp;&nbsp;src="https://tally.so/embed/<strong>[YOUR_FORM_ID]</strong>?hideTitle=1&amp;transparentBackground=1"<br>
+&nbsp;&nbsp;width="100%"<br>
+&nbsp;&nbsp;height="600"<br>
+&nbsp;&nbsp;frameborder="0"<br>
+&gt;&lt;/iframe&gt;
+      </div>
+      <p class="tally-note">In Tally: Share → Embed → copy the iframe snippet and paste it above in place of this placeholder.</p>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-left">
+    <span class="footer-text">cata.sg · Beta Feedback Portal</span>
+  </div>
+  <a href="mailto:support@cata.sg" class="footer-link">support@cata.sg</a>
+</footer>
+
+<script>
+  // ── DATA ──────────────────────────────────────────────────
+  const data = [
+    {
+      id: 'GYG-001',
+      title: 'Loyalty points not reflected after completing an order',
+      desc: 'After placing and receiving an order, points balance remains unchanged.',
+      category: 'loyalty', priority: 'critical', status: 'inprog',
+      comment: 'Confirmed on our end. Fix shipping in the next build — ETA Thursday.',
+      date: '2 Apr 2025', by: 'Marcus T.',
+    },
+    {
+      id: 'GYG-002',
+      title: 'Push notification doesn't deep link to the correct screen',
+      desc: 'Tapping a promo push opens the home screen instead of the promotion detail.',
+      category: 'push', priority: 'high', status: 'inprog',
+      comment: 'Deep link routing issue found. Fix in progress for v1.3.2.',
+      date: '1 Apr 2025', by: 'Priya S.',
+    },
+    {
+      id: 'GYG-003',
+      title: 'Checkout button unresponsive after applying a voucher code',
+      desc: '"Place Order" button does nothing after a valid voucher is applied. Reproducible 4/5 attempts.',
+      category: 'ordering', priority: 'critical', status: 'awaiting',
+      comment: 'Could you let us know which voucher code you used and the order total at the time?',
+      date: '3 Apr 2025', by: 'James L.',
+    },
+    {
+      id: 'GYG-004',
+      title: 'Font size too small in order history on iPhone SE',
+      desc: 'Text is very small and hard to read on smaller screen sizes.',
+      category: 'ui', priority: 'low', status: 'resolved',
+      comment: 'Fixed in v1.3.1 — order history now uses dynamic type across all screen sizes.',
+      date: '28 Mar 2025', by: 'Clara N.',
+    },
+    {
+      id: 'GYG-005',
+      title: 'Allow users to save multiple delivery addresses',
+      desc: 'Would be useful to save home and office addresses separately.',
+      category: 'ui', priority: 'medium', status: 'open',
+      comment: '',
+      date: '31 Mar 2025', by: 'Ryan K.',
+    },
+    {
+      id: 'GYG-006',
+      title: 'App icon appears pixelated on Android high-density screens',
+      desc: 'On Samsung Galaxy S23 Ultra the launcher icon looks blurry.',
+      category: 'ui', priority: 'low', status: 'wontfix',
+      comment: 'This is a known sideload artifact — production build uses full-res assets. Not a bug.',
+      date: '29 Mar 2025', by: 'Jason M.',
+    },
+  ];
+
+  const statusMap = {
+    open:      { label: 'Open',         cls: 's-open',       icon: '◯' },
+    inprog:    { label: 'In Progress',  cls: 's-inprog',     icon: '◑' },
+    resolved:  { label: 'Resolved',     cls: 's-resolved',   icon: '✓' },
+    wontfix:   { label: "Won't Fix",    cls: 's-wontfix',    icon: '✗' },
+    monitoring:{ label: 'Monitoring',   cls: 's-monitoring', icon: '◎' },
+    awaiting:  { label: 'Awaiting info',cls: 's-awaiting',   icon: '?' },
+  };
+
+  const priMap = {
+    critical: { label: 'Critical', cls: 'p-critical' },
+    high:     { label: 'High',     cls: 'p-high' },
+    medium:   { label: 'Medium',   cls: 'p-medium' },
+    low:      { label: 'Low',      cls: 'p-low' },
+  };
+
+  const catMap = {
+    loyalty:  { label: 'Loyalty',      cls: 'cat-loyalty' },
+    ordering: { label: 'Ordering',     cls: 'cat-ordering' },
+    ui:       { label: 'UI / Design',  cls: 'cat-ui' },
+    push:     { label: 'Push Notif.',  cls: 'cat-push' },
+    payments: { label: 'Payments',     cls: 'cat-payments' },
+    other:    { label: 'Other',        cls: 'cat-other' },
+  };
+
+  let currentFilter = 'all';
+  let currentSearch = '';
+
+  function renderRows(rows) {
+    const tbody = document.getElementById('table-body');
+    const empty = document.getElementById('empty-state');
+    const table = document.getElementById('feedback-table');
+    tbody.innerHTML = '';
+
+    if (!rows.length) {
+      empty.style.display = 'block';
+      table.style.display = 'none';
+    } else {
+      empty.style.display = 'none';
+      table.style.display = '';
+      rows.forEach((item, i) => {
+        const s = statusMap[item.status] || statusMap.open;
+        const p = priMap[item.priority] || priMap.medium;
+        const c = catMap[item.category] || catMap.other;
+        const tr = document.createElement('tr');
+        tr.dataset.status = item.status;
+        tr.dataset.search = (item.title + item.desc + item.id).toLowerCase();
+        tr.style.animationDelay = (i * 0.05) + 's';
+        tr.innerHTML = `
+          <td><span class="issue-id">${item.id}</span></td>
+          <td style="max-width:260px">
+            <div class="issue-title">${item.title}</div>
+            ${item.desc ? `<div class="issue-desc">${item.desc}</div>` : ''}
+            ${item.by ? `<div class="issue-by">by ${item.by}</div>` : ''}
+          </td>
+          <td><span class="cat-chip ${c.cls}">${c.label}</span></td>
+          <td><span class="pri ${p.cls}">${p.label}</span></td>
+          <td><span class="status-badge ${s.cls}">${s.icon} ${s.label}</span></td>
+          <td><span class="cata-comment${item.comment ? '' : ' empty'}">${item.comment || '—'}</span></td>
+          <td><span class="date-cell">${item.date}</span></td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+    updateStats();
+  }
+
+  function updateStats() {
+    document.getElementById('stat-total').textContent = data.length;
+    document.getElementById('stat-open').textContent  = data.filter(d => d.status === 'open').length;
+    document.getElementById('stat-prog').textContent  = data.filter(d => d.status === 'inprog').length;
+    document.getElementById('stat-done').textContent  = data.filter(d => d.status === 'resolved').length;
+    document.getElementById('stat-await').textContent = data.filter(d => d.status === 'awaiting').length;
+  }
+
+  function applyFilters() {
+    let rows = data;
+    if (currentFilter !== 'all') rows = rows.filter(d => d.status === currentFilter);
+    if (currentSearch) rows = rows.filter(d =>
+      (d.title + d.desc + d.id).toLowerCase().includes(currentSearch)
+    );
+    renderRows(rows);
+  }
+
+  function setFilter(f, btn) {
+    currentFilter = f;
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    applyFilters();
+  }
+
+  function searchTable(val) {
+    currentSearch = val.toLowerCase();
+    applyFilters();
+  }
+
+  // ── TABS ──────────────────────────────────────────────────
+  function switchTab(tab, btn) {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+
+    const statsBar   = document.getElementById('stats-bar');
+    const tracker    = document.getElementById('tab-tracker');
+    const submitForm = document.getElementById('tab-submit');
+
+    if (tab === 'tracker') {
+      tracker.style.display    = 'block';
+      submitForm.style.display = 'none';
+      statsBar.style.display   = 'flex';
+    } else {
+      tracker.style.display    = 'none';
+      submitForm.style.display = 'block';
+      statsBar.style.display   = 'none';
+    }
+  }
+
+  // ── INIT ──────────────────────────────────────────────────
+  renderRows(data);
+</script>
+</body>
+</html>
