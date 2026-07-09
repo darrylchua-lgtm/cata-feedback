@@ -20,10 +20,11 @@
  *       JIRA_AUTO_CREATE false               (optional; 'true' = ticket for every row, no checkbox)
  *   - Run installTrigger() once (grants permissions on first run).
  *
- * Sheet expectations: first row = headers. Tally's Google Sheets integration provides
- * "Submission ID", "Your email", "Description", "Category", "Merchant priority",
- * "Submitted at" and the hidden field "merchant". Add manually: "Status",
- * "CATA response", "Create Jira" (checkbox column) and "Jira key".
+ * Sheet expectations: first row = headers (case-insensitive). Tally's Google Sheets
+ * integration provides "Submission ID", "Your Email", "Description", "Category",
+ * "Merchant Priority", "Steps to reproduce", "Submitted at" and the hidden field
+ * "Merchant". Added manually: "Status", "CATA response", "Create JIRA" (checkbox
+ * column) and "JIRA ticket ID".
  */
 
 var SHEET_NAME = 'Feedback'; // tab that receives Tally submissions; falls back to first tab
@@ -87,15 +88,15 @@ function syncJiraTickets() {
     if (values.length < 2) return;
     var headers = values[0].map(function (h) { return String(h).trim().toLowerCase(); });
     var col = function (name) { return headers.indexOf(name); };
-    var cCreate = col('create jira'), cKey = col('jira key');
+    var cCreate = col('create jira'), cKey = col('jira ticket id');
     if (cCreate < 0 || cKey < 0) {
-      throw new Error('Add "Create Jira" (checkbox) and "Jira key" columns to the sheet.');
+      throw new Error('Add "Create JIRA" (checkbox) and "JIRA ticket ID" columns to the sheet.');
     }
 
     for (var i = 1; i < values.length; i++) {
       var row = values[i];
-      if (String(row[cKey]).trim()) continue;               // already has a ticket
-      if (!autoCreate && row[cCreate] !== true) continue;   // checkbox not ticked
+      if (String(row[cKey]).trim()) continue;                 // already has a ticket
+      if (!autoCreate && !isChecked_(row[cCreate])) continue; // checkbox not ticked
       var desc = String(row[col('description')] || '').trim();
       if (!desc) continue;
       var merchant = String(row[col('merchant')] || '').trim().toLowerCase();
@@ -112,6 +113,7 @@ function syncJiraTickets() {
           'Submitted by': String(row[col('your email')] || ''),
           'Category': String(row[col('category')] || ''),
           'Merchant priority': String(row[col('merchant priority')] || ''),
+          'Steps to reproduce': String(row[col('steps to reproduce')] || ''),
           'Submitted at': String(row[col('submitted at')] || ''),
           'Portal': merchant ? 'https://cata-feedback.vercel.app/' + merchant : ''
         },
@@ -150,6 +152,11 @@ function createJiraIssue_(site, email, token, issue) {
     throw new Error('Jira create failed (' + resp.getResponseCode() + '): ' + resp.getContentText());
   }
   return JSON.parse(resp.getContentText()).key;
+}
+
+// True for a real checkbox tick and for TRUE/yes typed as text.
+function isChecked_(v) {
+  return v === true || ['true', 'yes'].indexOf(String(v).trim().toLowerCase()) >= 0;
 }
 
 function adfParagraph_(text) {

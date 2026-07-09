@@ -58,8 +58,9 @@ to rewrite them into every v2 site.
    the embed URL's `redirectTo` handles it.
 2. **Sheet.** Connect the form's Google Sheets integration → new spreadsheet,
    tab named `Feedback` (or edit `SHEET_NAME` in Code.gs). Append columns:
-   `Status`, `CATA response`, `Create Jira` (Insert → Checkbox), `Jira key`.
+   `Status`, `CATA response`, `Create JIRA` (Insert → Checkbox), `JIRA ticket ID`.
    Keep the sheet **private** — do not enable link sharing.
+   *(Done 2026-07-09: sheet `1ceR55HKCWRozO5y3m5lr4c9-n25noL7K6kwoVhMByXQ`.)*
 3. **Apps Script.** Extensions → Apps Script, paste
    [apps-script/Code.gs](apps-script/Code.gs). Deploy → New deployment → Web
    app, *Execute as: Me*, *Access: Anyone* → copy the `/exec` URL.
