@@ -27,10 +27,11 @@ tester ─▶ portal site (/<slug>)                             Darryl / CATA te
   Script ([apps-script/Code.gs](apps-script/Code.gs)) serves per-merchant JSON
   and only the public columns, so merchants can't see each other's feedback and
   the sheet never needs to be shared publicly.
-- Jira: tick the "Create Jira" checkbox on a row → the Apps Script trigger
-  creates a TECHSUPP ticket (labels `beta-feedback`, `<slug>`) and writes the
-  key back to the "Jira key" column. Set `JIRA_AUTO_CREATE=true` to skip the
-  checkbox and ticket everything.
+- New-submission alerts: the Tally form's Slack integration (connected
+  2026-07-09) pings on every submission; tickets are raised manually from
+  there. The Apps Script also contains an optional Jira sync (checkbox on a
+  row → TECHSUPP ticket, key written back) — written and ready but NOT
+  enabled: it needs a Jira API token + Script Properties (see Code.gs header).
 
 ## Day-to-day: add a merchant
 
@@ -77,9 +78,10 @@ to rewrite them into every v2 site.
    scaffold a test merchant, submit through its form, and confirm the row lands
    tagged and renders on the portal.
 
-## Migrating the existing v1 sites
+## Migrating the existing v1 sites (optional — decided against for now, 2026-07-09)
 
-bc, pr and gyg still run the old model (own form + own public-CSV sheet):
+bc, pr and gyg stay on the old model (own form + own public-CSV sheet) and
+keep working untouched; only new merchants use v2. If that ever changes:
 
 | Site | Old Tally form | Old sheet ID |
 | --- | --- | --- |
