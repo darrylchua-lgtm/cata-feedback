@@ -8,7 +8,10 @@ setup and migration steps: [README.md](README.md).
 ## Rules
 
 - New merchant sites come from `python3 scaffold.py "<Name>" <slug> …` — don't
-  hand-copy `template/`. Slugs are short lowercase (bc, pr, gyg).
+  hand-copy `template/`. The slug is the merchant's name as a domain-style word
+  (lowercase, no spaces): `friendlyfish`, `goldies`. The legacy v1 sites use
+  short abbreviations (bc, pr, gyg) — those stay as-is; new sites use the full
+  name.
 - Design/behavior changes go into `template/index.html`, then re-scaffold
   merchant folders (`--force`) to pick them up. Don't hand-edit generated
   `<slug>/index.html`.

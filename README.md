@@ -35,7 +35,10 @@ tester ─▶ portal site (/<slug>)                             Darryl / CATA te
 
 ## Day-to-day: add a merchant
 
-**1. Scaffold** (creates the merchant folder, no network, nothing published):
+**1. Scaffold** (creates the merchant folder, no network, nothing published).
+The slug is the merchant's name as a domain-style word — lowercase, no spaces
+(`friendlyfish`, `goldies`) — so the portal URL and the form's `?merchant` tag
+stay consistent:
 
 ```bash
 python3 scaffold.py "Goldies" goldies --logo ~/Documents/cata/merchants/goldies/brand/logo.png

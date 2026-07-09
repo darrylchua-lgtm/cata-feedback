@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 """Scaffold a merchant feedback portal from template/, or refresh shared config in all portals.
 
-New merchant (one command, then commit + push to go live):
+New merchant (one command, then commit + push to go live). The slug is the
+merchant's name as a domain-style word — lowercase, no spaces — so the URL and
+the ?merchant tag read consistently (e.g. friendlyfish, goldies):
     python3 scaffold.py "Goldies" goldies --logo ~/Documents/cata/merchants/goldies/brand/logo.png
-    python3 scaffold.py "The Berry Spot" tbs --domain theberryspot.sg
-    python3 scaffold.py "Pizza Rimini" pr                      # no logo -> initials icon
+    python3 scaffold.py "The Berry Spot" theberryspot --domain theberryspot.sg
+    python3 scaffold.py "Friendly Fish" friendlyfish          # no logo -> initials icon
 
 After editing portal.config.json (new Tally form ID or data URL):
     python3 scaffold.py --refresh
