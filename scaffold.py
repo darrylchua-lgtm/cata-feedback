@@ -94,7 +94,7 @@ def new_site(args):
 
     print(f"Created {dest.relative_to(ROOT)}/")
     print(f"  Portal URL (after push): https://cata-feedback.vercel.app/{args.slug}")
-    print(f"  Form pre-fill check:     tally.so/embed/{cfg['tally_form_id']}?merchant={args.slug}")
+    print(f"  Form pre-fill check:     tally.so/embed/{cfg['tally_form_id']}?Merchant={args.slug}")
     print("Next: git add, commit, and push (push publishes the site).")
 
 

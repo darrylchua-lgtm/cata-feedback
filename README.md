@@ -53,9 +53,11 @@ to rewrite them into every v2 site.
 1. **Unified Tally form.** Duplicate one of the existing merchant forms
    (bc = `VL1x6g`). Keep the questions/labels exactly: *Your email*,
    *Description*, *Category*, *Merchant priority* — the sites map sheet columns
-   by these names. Add a **hidden field** named `merchant` (Tally: insert block
-   → Hidden fields). Remove any per-merchant redirect in "After submission" —
-   the embed URL's `redirectTo` handles it.
+   by these names. Add a **hidden field** named `Merchant` — the URL parameter
+   that fills it is case-sensitive and must match the field name exactly (the
+   portals send `?Merchant=<slug>`). Remove any per-merchant redirect in
+   "After submission" — the embed URL's `redirectTo` handles it.
+   *(Done 2026-07-09: form `7R5rgA`.)*
 2. **Sheet.** Connect the form's Google Sheets integration → new spreadsheet,
    tab named `Feedback` (or edit `SHEET_NAME` in Code.gs). Append columns:
    `Status`, `CATA response`, `Create JIRA` (Insert → Checkbox), `JIRA ticket ID`.
