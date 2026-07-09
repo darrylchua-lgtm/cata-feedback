@@ -35,15 +35,36 @@ tester ─▶ portal site (/<slug>)                             Darryl / CATA te
 
 ## Day-to-day: add a merchant
 
+**1. Scaffold** (creates the merchant folder, no network, nothing published):
+
 ```bash
 python3 scaffold.py "Goldies" goldies --logo ~/Documents/cata/merchants/goldies/brand/logo.png
-git add goldies && git commit -m "feat: add Goldies feedback portal" && git push   # push = live
+```
+
+**2. Preview locally before publishing.** Serve the repo and open the new
+portal in a browser — the live data fetch works locally because the Apps
+Script accepts requests from any origin:
+
+```bash
+python3 -m http.server 8899      # from the repo root
+# then open http://localhost:8899/goldies/  (Ctrl-C to stop the server)
+```
+
+Check the tracker tab loads (empty for a brand-new merchant is correct) and
+the Submit tab shows the form.
+
+**3. Publish — separate, deliberate step.** A push deploys live via Vercel,
+so do it only after the preview looks right and Darryl has said go:
+
+```bash
+git add goldies && git commit -m "feat: add Goldies feedback portal"
+git push        # ← this publishes the live site
 ```
 
 Icon options: `--logo <file>` (copied into the folder), `--domain goldies.sg`
-(favicon), or neither (initials; override with `--initials GD`, background with
-`--icon-bg '#EAF2E3'`). That's the entire per-merchant setup — no new Tally
-form, no new sheet.
+(favicon), or neither (initials — first letters of the first two words of the
+name; override with `--initials GD`, background with `--icon-bg '#EAF2E3'`).
+That's the entire per-merchant setup — no new Tally form, no new sheet.
 
 Shared values changed (new form / new deployment URL)? Edit
 [portal.config.json](portal.config.json), then `python3 scaffold.py --refresh`
