@@ -7,6 +7,7 @@ the ?merchant tag read consistently (e.g. friendlyfish, goldies):
     python3 scaffold.py "Goldies" goldies --logo ~/Documents/cata/merchants/goldies/brand/logo.png
     python3 scaffold.py "The Berry Spot" theberryspot --domain theberryspot.sg
     python3 scaffold.py "Friendly Fish" friendlyfish          # no logo -> initials icon
+    python3 scaffold.py "Guzman y Gomez" gygsot --product kiosk  # hero says "kiosk" not "app"
 
 After editing portal.config.json (new Tally form ID or data URL):
     python3 scaffold.py --refresh
@@ -81,11 +82,13 @@ def new_site(args):
 
     html = html.replace("[MERCHANT NAME]", args.name)
     html = html.replace("MERCHANT_SLUG", args.slug)
+    html = html.replace("PRODUCT_TITLE", args.product.title())
+    html = html.replace("PRODUCT_NOUN", args.product.lower())
     html = html.replace("TALLY_FORM_ID", cfg["tally_form_id"])
     html = html.replace("DATA_URL_HERE", cfg["data_url"])
     html = re.sub(r"<!-- REPLACE:.*?-->", "", html)  # drop template-only instructions
 
-    leftovers = [t for t in ("MERCHANT_", "TALLY_FORM_ID", "DATA_URL_HERE", "[MERCHANT") if t in html]
+    leftovers = [t for t in ("MERCHANT_", "PRODUCT_", "TALLY_FORM_ID", "DATA_URL_HERE", "[MERCHANT") if t in html]
     if leftovers:
         sys.exit(f"Unreplaced placeholders remain ({leftovers}) — template and scaffold are out of sync.")
 
@@ -128,6 +131,7 @@ def main():
     ap.add_argument("--domain", help="Merchant website domain — icon uses its favicon")
     ap.add_argument("--initials", help="Override the initials shown when no logo/domain is given")
     ap.add_argument("--icon-bg", default="#F2E3D8", help="Icon background color (default %(default)s)")
+    ap.add_argument("--product", default="app", help='What testers are giving feedback on, shown in the hero copy (default %(default)s; e.g. "kiosk")')
     ap.add_argument("--force", action="store_true", help="Overwrite an existing merchant folder")
     ap.add_argument("--refresh", action="store_true", help="Re-apply portal.config.json to all v2 sites")
     args = ap.parse_args()
